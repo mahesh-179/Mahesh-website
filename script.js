@@ -1,140 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahesh Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #120a8f; /* Deep Royal Blue */
-      color: white;
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: #0e086b;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      z-index: 1000;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav li {
-      cursor: pointer;
-    }
-    nav li:hover {
-      color: #00c3ff;
-    }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding-top: 20px;
-    }
-    .project-card {
-      background-color: #1a0dab;
-      padding: 1rem;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-    .project-card:hover {
-      transform: scale(1.05);
-    }
-    a {
-      color: #00e5ff;
-      text-decoration: none;
-    }
-    form input, form textarea, form button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: none;
-    }
-    form button {
-      background-color: #00e5ff;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    form button:hover {
-      background-color: #00bcd4;
-    }
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <ul>
-      <li onclick="scrollToSection('home')">Home</li>
-      <li onclick="scrollToSection('about')">About</li>
-      <li onclick="scrollToSection('projects')">Projects</li>
-      <li onclick="scrollToSection('contact')">Contact</li>
-    </ul>
-  </nav>
+// Current year for footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  <section id="home">
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hi, I'm Mahesh — an aspiring backend developer.</p>
-  </section>
+// Mobile menu toggle - FIXED
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+const closeMenu = document.getElementById('closeMenu');
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m currently learning Python and Django. I'm passionate about building web applications and improving my coding skills every day.</p>
-  </section>
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>ATM Banking System</h3>
-        <p>Basic banking app with transaction features in Python.</p>
-        <a href="https://github.com/Mahesh-179/simple-atm-banking-system-python" target="_blank">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>Cafe Management System</h3>
-        <p>System to manage cafe orders and billing with QR code.</p>
-        <a href="https://github.com/Mahesh-179/Cafe-Management-System" target="_blank">View on GitHub</a>
-      </div>
-    </div>
-  </section>
+closeMenu.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
 
-  <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+// Back to top button - FIXED
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+    } else {
+        backToTop.classList.remove('active');
     }
-  </script>
-</body>
-</html>
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Smooth scrolling for anchor links - FIXED
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            e.preventDefault();
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Animation on scroll - FIXED
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate-in');
+    
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight * 0.8;
+        
+        if (elementPosition < screenPosition) {
+            element.classList.add('visible');
+        }
+    });
+}
+
+// Initialize animations
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', () => {
+    animateOnScroll();
+});
+
+// Form submission - FIXED
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all fields');
+            return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+        
+        // Show success message
+        formSuccess.classList.add('show');
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+            this.reset();
+            formSuccess.classList.remove('show');
+        }, 3000);
+        
+        // In a real application, you would send the data to a server here
+        console.log('Form submitted:', { name, email, subject, message });
+    });
+}
+
+// Certificate Modal Functionality - FIXED
+const certificationCards = document.querySelectorAll('.certification-card');
+const modal = document.getElementById('certificateModal');
+const modalImage = document.getElementById('modalCertificateImage');
+const modalTitle = document.getElementById('modalCertificateTitle');
+const modalIssuer = document.getElementById('modalCertificateIssuer');
+const modalDate = document.getElementById('modalCertificateDate');
+const modalId = document.getElementById('modalCertificateId');
+const modalDescription = document.getElementById('modalCertificateDescription');
+const modalLink = document.getElementById('modalCertificateLink');
+const closeButtons = document.querySelectorAll('.close-modal');
+
+// Certificate data
+const certificateData = {
+    'python': {
+        title: 'Python Programming Certification',
+        issuer: 'Great Learning',
+        date: 'May 2023',
+        description: 'Comprehensive certification covering Python fundamentals, data structures, and object-oriented programming concepts. This certification validates expertise in Python programming language.',
+        credentialId: 'GL-PYTHON-2023-05789'
+    },
+    'web': {
+        title: 'Web Development Fundamentals',
+        issuer: 'The Digital Adda',
+        date: 'March 2023',
+        description: 'Certification covering HTML5, CSS3, JavaScript, and responsive design principles. Demonstrates proficiency in modern web development techniques.',
+        credentialId: 'TDA-WEB-2023-03421'
+    },
+    'responsive': {
+        title: 'Responsive Web Design',
+        issuer: 'FreeCodeCamp',
+        date: 'May 7, 2025',
+        description: 'Certification demonstrating proficiency in HTML, CSS, and JavaScript for responsive web development. Includes projects showcasing responsive design implementation.',
+        credentialId: 'FCC-RWD-2025-78901'
+    }
+};
+
+certificationCards.forEach(card => {
+    card.addEventListener('click', function() {
+        const certType = this.getAttribute('data-cert');
+        const data = certificateData[certType];
+        
+        if (data) {
+            modalImage.src = this.querySelector('img').src;
+            modalTitle.textContent = data.title;
+            modalIssuer.textContent = data.issuer;
+            modalDate.textContent = data.date;
+            modalDescription.textContent = data.description;
+            modalId.textContent = data.credentialId;
+            modalLink.href = "#";
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Close modal functionality
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+closeButtons.forEach(button => {
+    button.addEventListener('click', closeModal);
+});
+
+// Close modal when clicking outside
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Prevent form buttons from submitting the page
+document.querySelectorAll('.certification-card .btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});

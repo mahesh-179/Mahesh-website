@@ -3,1200 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahesh Raj Lamsal</title>
+    <title>Mahesh Raj Lamsal - Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #f43f5e;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #e2e8f0;
-            --text: #334155;
-            --text-light: #94a3b8;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Utility Classes */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        .section-padding {
-            padding: 5rem 0;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(120deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.75rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.2);
-        }
-        
-        /* Glass effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-        }
-        
-        /* Header and Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 1rem 0;
-        }
-        
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .logo span {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            border-radius: 50%;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 60%),
-                        radial-gradient(circle at bottom left, rgba(244, 63, 94, 0.1), transparent 60%);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-        
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: transform 0.5s ease;
-        }
-        
-        .hero-image img:hover {
-            transform: perspective(1000px) rotateY(0);
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: var(--primary);
-            background: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-        }
-        
-        /* About Section */
-        .about {
-            position: relative;
-        }
-        
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
-            z-index: -1;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-        }
-        
-        .section-header p {
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-        
-        .about-image .main-img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: -30px;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            z-index: 1;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Projects Section */
-        .projects {
-            background-color: #f1f5f9;
-            position: relative;
-        }
-        
-        .projects::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(244, 63, 94, 0.1), transparent 70%);
-            z-index: 0;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-image {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-    
-        .project-image .project-category {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .project-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-tech span {
-            background: var(--gray);
-            color: var(--text);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-links a {
-            flex: 1;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        /* Skills Section */
-        .skills {
-            position: relative;
-        }
-        
-        .skills::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
-            z-index: -1;
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-icon {
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(244, 63, 94, 0.1) 100%);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-        
-        .skill-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        /* Contact Section */
-        .contact {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(244, 63, 94, 0.05) 100%);
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 3rem;
-            position: relative;
-        }
-        
-        .contact-info {
-            flex: 1;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info p {
-            margin-bottom: 2rem;
-            color: var(--text-light);
-        }
-        
-        .contact-details {
-            list-style: none;
-        }
-        
-        .contact-details li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(244, 63, 94, 0.1) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--primary);
-        }
-        
-        .contact-details p {
-            margin: 0;
-            font-weight: 500;
-        }
-        
-        .contact-details span {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .contact-form {
-            flex: 1;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-form h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid var(--gray);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 0 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent 70%);
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-about {
-            flex: 2;
-            min-width: 250px;
-        }
-        
-        .footer-about h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .footer-about p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-links {
-            flex: 1;
-            min-width: 180px;
-        }
-        
-        .footer-links h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .footer-social {
-            flex: 1;
-            min-width: 180px;
-        }
-        
-        .footer-social h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-light);
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                margin-bottom: 2rem;
-            }
-            
-            .about-text {
-                text-align: center;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100%;
-                background: white;
-                flex-direction: column;
-                gap: 0;
-                padding: 5rem 2rem;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links li {
-                width: 100%;
-            }
-            
-            .nav-links a {
-                display: block;
-                padding: 1rem 0;
-                font-size: 1.2rem;
-                border-bottom: 1px solid var(--gray);
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            
-            .skills-container {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-                padding: 0 0.5rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-        }
-         /* Certifications Section */
-         .certifications {
-            background-color: #f1f5f9;
-            position: relative;
-        }
-        
-        .certifications::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
-            z-index: 0;
-        }
-        
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .certification-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .certification-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .certification-image {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .certification-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .certification-card:hover .certification-image img {
-            transform: scale(1.05);
-        }
-        
-        .certification-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .certification-image:hover .certification-overlay {
-            opacity: 1;
-        }
-        
-        .certification-overlay i {
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .certification-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .certification-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .certification-content .issuer {
-            color: var(--primary);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .certification-content .date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .certification-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-        
-        .certification-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-        
-        /* Modal for Certificate Viewer */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1100;
-            overflow: auto;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            position: relative;
-            width: 90%;
-            max-width: 900px;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            animation: modalFadeIn 0.3s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .modal-header {
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--gray);
-        }
-        
-        .modal-header h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
-        }
-        
-        .modal-body {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .modal-body img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .certificate-details {
-            margin-top: 2rem;
-            width: 100%;
-        }
-        
-        .certificate-details h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .certificate-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .meta-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-        
-        .meta-item i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        
-        .meta-item div span {
-            display: block;
-        }
-        
-        .meta-item div span:first-child {
-            font-weight: 600;
-            color: var(--text);
-        }
-        
-        .meta-item div span:last-child {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .modal-footer {
-            padding: 1.5rem;
-            border-top: 1px solid var(--gray);
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .certifications-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                width: 95%;
-            }
-            
-            .certificate-meta {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo"><span>M</span>Mahesh</a>
-                <button class="menu-toggle" aria-label="Toggle Menu">
+                <a href="#" class="logo"><span>M</span>Mahesh Lamsal</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <button class="close-menu" aria-label="Close Menu">
+                    <button class="close-menu" id="closeMenu" aria-label="Close Menu">
                         <i class="fas fa-times"></i>
                     </button>
                 </ul>
@@ -1208,7 +37,7 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text animate__animated animate__fadeInLeft">
+                <div class="hero-text animate-in">
                     <h1>Hello, I'm <span class="text-gradient">Mahesh</span></h1>
                     <p>A passionate Software Developer specializing in Python applications and system development. I create efficient, scalable solutions for real-world problems.</p>
                     <div class="btn-group">
@@ -1220,14 +49,14 @@
                         </a>
                     </div>
                     <div class="social-icons">
-                        <a href="https://github.com/Mahesh-179" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/mahesh-raj-lamsal-264a8b340/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.facebook.com/mahesh.lamsal.2025/" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="maheshrajlamsal01@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/Mahesh-179" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mahesh-raj-lamsal-264a8b340/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/mahesh.lamsal.2025/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:maheshrajlamsal01@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="hero-image animate__animated animate__fadeInRight">
-                    <img src="web-developer.png"alt="Developer workspace with computer and code">
+                <div class="hero-image animate-in">
+                    <img src="web-developer.png" alt="Developer workspace with computer and code">
                 </div>
             </div>
         </div>
@@ -1236,17 +65,18 @@
     <!-- About Section -->
     <section id="about" class="about section-padding">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-in">
                 <h2>About Me</h2>
                 <p>Get to know me and my journey</p>
             </div>
             <div class="about-content">
-                <div class="about-image animate__animated animate__fadeInLeft">
-                    <img class="main-img" src= "about.png" alt="Mahesh's profile photo">
+                <div class="about-image animate-in">
+                    <img class="main-img" src="about.png" alt="Mahesh's profile photo">
                 </div>
-                <div class="about-text animate__animated animate__fadeInRight">
+                <div class="about-text animate-in">
                     <h3>Software Developer & Problem Solver</h3>
-                    <p>I’m Mahesh Lamsal, a passionate and goal-driven individual currently diving deep into backend development with Python and Django. With a strong foundation in computer systems and a keen interest in building smart, real-world solutions.<br> I’m on a mission to become a job-ready backend developer. I thrive on challenges, believe in lifelong learning, and I’m working toward creating scalable software that brings real value to users and businesses alikie</p>
+                    <p>I'm Mahesh Lamsal, a passionate and goal-driven individual currently diving deep into backend development with Python and Django. With a strong foundation in computer systems and a keen interest in building smart, real-world solutions.</p>
+                    <p>I'm on a mission to become a job-ready backend developer. I thrive on challenges, believe in lifelong learning, and I'm working toward creating scalable software that brings real value to users and businesses alike.</p>
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-user-plus"></i> Let's Connect
                     </a>
@@ -1258,204 +88,136 @@
     <!-- Projects Section -->
     <section id="projects" class="projects section-padding">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-in">
                 <h2>My Projects</h2>
                 <p>Showcasing my recent work and creations</p>
             </div>
             <div class="projects-grid">
                 <!-- ATM Banking System -->
-                                <!-- ATM Banking System -->
-                                <div class="project-card animate__animated animate__fadeInUp">
-                                    <div class="project-image">
-                                        <img src="ATM-Simulator.png" alt="ATM Banking System">
-                                        <span class="project-category">Python</span>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>ATM Banking System</h3>
-                                        <p>A secure and efficient ATM simulation with account management, transaction processing, and admin features. Implements OOP principles with user authentication and transaction history.</p>
-                                        <div class="project-tech">
-                                            <span>Python</span>
-                                            <span>Conditional</span>
-                                            <span>Encryption</span>
-                                        </div>
-                                        <div class="project-links">
-                                            <a href="https://github.com/Mahesh-179/simple-atm-banking-system-python.git" target="_blank" class="btn btn-outline">
-                                                <i class="fab fa-github"></i> Code
-                                            </a>
-                                            <a href="https://github.com/Mahesh-179/simple-atm-banking-system-python.git" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i> Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <!-- Cafe Management System -->
-                                <div class="project-card animate__animated animate__fadeInUp">
-                                    <div class="project-image">
-                                        <img src="cafe.jpg" alt="Cafe Management System">
-                                        <span class="project-category">Python</span>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Cafe Management System</h3>
-                                        <p>Comprehensive solution for cafe operations including order management, inventory tracking, and sales reporting with a user-friendly console interface and data persistence.</p>
-                                        <div class="project-tech">
-                                            <span>Python</span>
-                                            <span>Conditional</span>
-                                        </div>
-                                        <div class="project-links">
-                                            <a href="https://github.com/Mahesh-179/Cafe-Management-System.git" target="_blank" class="btn btn-outline">
-                                                <i class="fab fa-github"></i> Code
-                                            </a>
-                                            <a href="https://github.com/Mahesh-179/Cafe-Management-System.git" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i> Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <!-- Weather Dashboard -->
-                                <div class="project-card animate__animated animate__fadeInUp">
-                                    <div class="project-image">
-                                        <img src="grade.png" alt="Weather Dashboard">
-                                        <span class="project-category">Web App</span>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Student Grade Management System</h3>
-                                        <p>Interactive Grade Management application that displays Student total grades. Features input data, process, and display student grade marks.</p>
-                                        <div class="project-tech">
-                                            <span>HTML/CSS</span>
-                                            <span>JavaScript</span>
-                                            <span>API</span>
-                                            <span>Bootstrap</span>
-                                        </div>
-                                        <div class="project-links">
-                                            <a href="#" class="btn btn-outline">
-                                                <i class="fab fa-github"></i> Code
-                                            </a>
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i> Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <!-- Task Manager -->
-                                <div class="project-card animate__animated animate__fadeInUp">
-                                    <div class="project-image">
-                                        <img src="task.jpg" alt="Task Manager App">
-                                        <span class="project-category">Web App</span>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Task Manager</h3>
-                                        <p>Productivity application for task management with features like priority setting, due dates, categories, and progress tracking. Built with a clean, intuitive interface.</p>
-                                        <div class="project-tech">
-                                            <span>HTML</span>
-                                            <span>JavaScript</span>
-                                            <span>CSS</span>
-                                        </div>
-                                        <div class="project-links">
-                                            <a href="#" class="btn btn-outline">
-                                                <i class="fab fa-github"></i> Code
-                                            </a>
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i> Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <!-- Portfolio Website -->
-                                <div class="project-card animate__animated animate__fadeInUp">
-                                    <div class="project-image">
-                                        <img src="portfolio.jpg" alt="Portfolio Website">
-                                        <span class="project-category">Web Design</span>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Portfolio Website</h3>
-                                        <p>Responsive personal portfolio website showcasing projects, skills, and contact information. Built with semantic HTML, modern CSS, and vanilla JavaScript for performance.</p>
-                                        <div class="project-tech">
-                                            <span>HTML5</span>
-                                            <span>CSS3</span>
-                                            <span>JavaScript</span>
-                                            <span>Responsive</span>
-                                        </div>
-                                        <div class="project-links">
-                                            <a href="#" class="btn btn-outline">
-                                                <i class="fab fa-github"></i> Code
-                                            </a>
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fas fa-eye"></i> Demo
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                    </section>
-                    
-                       <!-- Certifications Section (Add this after Skills section) -->
+                <div class="project-card animate-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ATM Banking System">
+                        <span class="project-category">Python</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>ATM Banking System</h3>
+                        <p>A secure and efficient ATM simulation with account management, transaction processing, and admin features. Implements OOP principles with user authentication and transaction history.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Conditional Logic</span>
+                            <span>Data Encryption</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mahesh-179/simple-atm-banking-system-python.git" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cafe Management System -->
+                <div class="project-card animate-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cafe Management System">
+                        <span class="project-category">Python</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cafe Management System</h3>
+                        <p>Comprehensive solution for cafe operations including order management, inventory tracking, and sales reporting with a user-friendly console interface and data persistence.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>File Handling</span>
+                            <span>Console UI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mahesh-179/Cafe-Management-System.git" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Grade System -->
+                <div class="project-card animate-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student Grade Management System">
+                        <span class="project-category">Web App</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Student Grade Management System</h3>
+                        <p>Interactive Grade Management application that displays Student total grades. Features input data, process, and display student grade marks.</p>
+                        <div class="project-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
     <section id="certifications" class="certifications section-padding">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-in">
                 <h2>My Certifications</h2>
                 <p>Official recognition of my skills and knowledge</p>
             </div>
             <div class="certifications-grid">
                 <!-- Certification 1 -->
-                <div class="certification-card animate__animated animate__fadeInUp">
+                <div class="certification-card animate-in" data-cert="python">
                     <div class="certification-image">
                         <img src="python.jpg" alt="Python Programming Certification">
-                        <div class="certification-overlay">
-                            <i class="fas fa-expand"></i>
-                        </div>
                         <span class="certification-badge">Verified</span>
                     </div>
                     <div class="certification-content">
                         <h3>Python Programming</h3>
-                        <p class="issuer">Great Learning </p>
+                        <p class="issuer">Great Learning</p>
                         <p class="date">Issued May 2023</p>
-                        <p>Comprehensive certification covering Python fundamentals</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <p>Comprehensive certification covering Python fundamentals, data structures, and object-oriented programming concepts.</p>
+                        <button class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Details
+                        </button>
                     </div>
                 </div>
 
                 <!-- Certification 2 -->
-                <div class="certification-card animate__animated animate__fadeInUp">
+                <div class="certification-card animate-in" data-cert="web">
                     <div class="certification-image">
                         <img src="web.jpg" alt="Web Development Certification">
-                        <div class="certification-overlay">
-                            <i class="fas fa-expand"></i>
-                        </div>
+                        <span class="certification-badge">Verified</span>
                     </div>
                     <div class="certification-content">
                         <h3>Web Development Fundamentals</h3>
                         <p class="issuer">The Digital Adda</p>
                         <p class="date">Issued March 2023</p>
                         <p>Certification covering HTML5, CSS3, JavaScript, and responsive design principles.</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <button class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Details
+                        </button>
                     </div>
                 </div>
 
                 <!-- Certification 3 -->
-                <div class="certification-card animate__animated animate__fadeInUp">
+                <div class="certification-card animate-in" data-cert="responsive">
                     <div class="certification-image">
-                        <img src="django.jpg" alt="SQL Certification">
-                        <div class="certification-overlay">
-                            <i class="fas fa-expand"></i>
-                        </div>
+                        <img src="codecamp.jpg" alt="Responsive Web Design Certification">
                         <span class="certification-badge">Verified</span>
                     </div>
                     <div class="certification-content">
-                        <h3>Python With Django Training</h3>
-                        <p class="issuer">Broadways Infosys</p>
-                        <p class="date">Issued January 2023</p>
-                        <p>Certification demonstrating proficiency in Python, django, and Webframe Work.</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: auto;">
-                            <i class="fas fa-external-link-alt"></i> View Credential
-                        </a>
+                        <h3>Responsive Web Design</h3>
+                        <p class="issuer">FreeCodeCamp</p>
+                        <p class="date">Issued May 7, 2025</p>
+                        <p>Certification demonstrating proficiency in HTML, CSS, and JavaScript for responsive web development.</p>
+                        <button class="btn btn-outline" style="margin-top: auto;">
+                            <i class="fas fa-external-link-alt"></i> View Details
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1466,13 +228,13 @@
     <div class="modal" id="certificateModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Certificate Details</h3>
+                <h3 id="modalCertificateTitle">Certificate Details</h3>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
                 <img src="" alt="Certificate" id="modalCertificateImage">
                 <div class="certificate-details">
-                    <h4 id="modalCertificateTitle"></h4>
+                    <h4>Certificate Information</h4>
                     <div class="certificate-meta">
                         <div class="meta-item">
                             <i class="fas fa-university"></i>
@@ -1508,348 +270,193 @@
         </div>
     </div>
             
-                
-                    <!-- Skills Section -->
-                    <section id="skills" class="skills section-padding">
-                        <div class="container">
-                            <div class="section-header">
-                                <h2>My Skills</h2>
-                                <p>The tools and technologies I work with</p>
-                            </div>
-                            <div class="skills-container">
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-python"></i>
-                                    </div>
-                                    <h3>Python</h3>
-                                    <p>Advanced Python programming with experience in OOP, data structures, and algorithm design</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-database"></i>
-                                    </div>
-                                    <h3>Database Systems</h3>
-                                    <p>SQL and NoSQL databases including MySQL, SQLite, and MongoDB</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-html5"></i>
-                                    </div>
-                                    <h3>HTML/CSS</h3>
-                                    <p>Semantic HTML5 and modern CSS3 with responsive design principles</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-js"></i>
-                                    </div>
-                                    <h3>JavaScript</h3>
-                                    <p>Client-side scripting, DOM manipulation, and basic front-end frameworks</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-code-branch"></i>
-                                    </div>
-                                    <h3>Version Control</h3>
-                                    <p>Git and GitHub for collaborative development and version management</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-terminal"></i>
-                                    </div>
-                                    <h3>CLI Development</h3>
-                                    <p>Building command-line interfaces and tools for system applications</p>
-                                </div>
-                                <div class="skill-card animate__animated animate__fadeInUp">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-code"></i> Django
-                                    </div>
-                                    <h3>django</h3>
-                                    <p>Python web framework for building lightweight web applications and APIs</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                
-                    <!-- Contact Section -->
-                    <section id="contact" class="contact section-padding">
-                        <div class="container">
-                            <div class="section-header">
-                                <h2>Get In Touch</h2>
-                                <p>Feel free to reach out for collaborations or just a friendly hello</p>
-                            </div>
-                            <div class="contact-container">
-                                <div class="contact-info animate__animated animate__fadeInLeft">
-                                    <h3>Contact Information</h3>
-                                    <p>I'm currently open to new opportunities, interesting projects, or just tech discussions. Don't hesitate to reach out!</p>
-                                    <ul class="contact-details">
-                                        <li>
-                                            <div class="contact-icon">
-                                                <i class="fas fa-envelope"></i>
-                                            </div>
-                                            <div>
-                                                <p>Email</p>
-                                                <span>maheshrajlamsal01@gmail.com</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="contact-icon">
-                                                <i class="fas fa-phone"></i>
-                                            </div>
-                                            <div>
-                                                <p>Phone</p>
-                                                <span>+977-9828890064</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="contact-icon">
-                                                <i class="fas fa-map-marker-alt"></i>
-                                            </div>
-                                            <div>
-                                                <p>Location</p>
-                                                <span>Nawalpur-Devchuli-03,Nepal/span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="social-icons">
-                                        <a href="https://github.com/Mahesh-179" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                                <div class="contact-form animate__animated animate__fadeInRight">
-                                    <h3>Send Me a Message</h3>
-                                    <form action="https://api.web3forms.com/submit" method="POST">
-                                        <input type="hidden" name="access_key" value="983b817e-f684-4cfc-ab83-fa55810ebe39">
-                                        
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="subject" placeholder="Subject">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
-                                        </div>
-                                        
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-paper-plane"></i> Send Message
-                                        </button>
-                                    </form>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                
-        <!-- Footer -->
-                    <footer>
-                        <div class="container">
-                            <div class="footer-content">
-                                <div class="footer-about">
-                                    <h3>Mahesh</h3>
-                                    <p>A passionate software developer dedicated to creating efficient and innovative solutions that solve real-world problems.</p>
-                                    <div class="social-links">
-                                        <a href="https://github.com/Mahesh-179" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fas fa-envelope"></i></a>
-                                    </div>
-                                </div>
-                                <div class="footer-links">
-                                    <h4>Quick Links</h4>
-                                    <ul>
-                                        <li><a href="#home">Home</a></li>
-                                        <li><a href="#about">About</a></li>
-                                        <li><a href="#projects">Projects</a></li>
-                                        <li><a href="#skills">Skills</a></li>
-                                        <li><a href="#contact">Contact</a></li>
-                                    </ul>
-                                </div>
-                                <div class="footer-links">
-                                    <h4>Technologies</h4>
-                                    <ul>
-                                        <li><a href="#">Python</a></li>
-                                        <li><a href="#">Web Development</a></li>
-                                        <li><a href="#">Database Systems</a></li>
-                                        <li><a href="#">Data Analysis</a></li>
-                                        <li><a href="#">CLI Tools</a></li>
-                                    </ul>
-                                </div>
-                                <div class="footer-social">
-                                    <h4>Connect With Me</h4>
-                                    <p>Interested in working together or have questions? Feel free to reach out!</p>
-                                    <a href="#contact" class="btn btn-outline" style="color: white; border-color: white; margin-top: 1rem;">
-                                        <i class="fas fa-paper-plane"></i> Contact Now
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer-bottom">
-                                <p>&copy; <span id="year"></span> Mahesh. All Rights Reserved.</p>
-                            </div>
-                        </div>
-                    </footer>
-                
-                    <!-- Back to Top Button -->
-                    <div class="back-to-top">
-                        <i class="fas fa-arrow-up"></i>
+    <!-- Skills Section -->
+    <section id="skills" class="skills section-padding">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2>My Skills</h2>
+                <p>The tools and technologies I work with</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
                     </div>
-                
-                    <!-- JavaScript -->
-                    <script>
-                        // Current year for footer
-                        document.getElementById('year').textContent = new Date().getFullYear();
-                
-                        // Mobile menu toggle
-                        const menuToggle = document.querySelector('.menu-toggle');
-                        const navLinks = document.querySelector('.nav-links');
-                        const closeMenu = document.querySelector('.close-menu');
-                
-                        menuToggle.addEventListener('click', () => {
-                            navLinks.classList.add('active');
-                        });
-                
-                        closeMenu.addEventListener('click', () => {
-                            navLinks.classList.remove('active');
-                        });
-                
-                        // Close mobile menu when clicking a link
-                        document.querySelectorAll('.nav-links a').forEach(link => {
-                            link.addEventListener('click', () => {
-                                navLinks.classList.remove('active');
-                            });
-                        });
-                
-                        // Header scroll effect
-                        const header = document.getElementById('header');
-                        window.addEventListener('scroll', () => {
-                            if (window.scrollY > 100) {
-                                header.classList.add('scrolled');
-                            } else {
-                                header.classList.remove('scrolled');
-                            }
-                        });
-                
-                        // Back to top button
-                        const backToTop = document.querySelector('.back-to-top');
-                        window.addEventListener('scroll', () => {
-                            if (window.scrollY > 300) {
-                                backToTop.classList.add('active');
-                            } else {
-                                backToTop.classList.remove('active');
-                            }
-                        });
-                
-                        backToTop.addEventListener('click', () => {
-                            window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth'
-                            });
-                        });
-                
-                        // Smooth scrolling for anchor links
-                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                            anchor.addEventListener('click', function(e) {
-                                e.preventDefault();
-                                
-                                const targetId = this.getAttribute('href');
-                                if (targetId === '#') return;
-                                
-                                const targetElement = document.querySelector(targetId);
-                                if (targetElement) {
-                                    window.scrollTo({
-                                        top: targetElement.offsetTop - 80,
-                                        behavior: 'smooth'
-                                    });
-                                }
-                            });
-                        });
-                
-                        // Animation on scroll
-                        function animateOnScroll() {
-                            const elements = document.querySelectorAll('.animate__animated');
-                            
-                            elements.forEach(element => {
-                                const elementPosition = element.getBoundingClientRect().top;
-                                const screenPosition = window.innerHeight / 1.3;
-                                
-                                if (elementPosition < screenPosition) {
-                                    const animationClass = element.classList[1];
-                                    element.classList.add(animationClass);
-                                }
-                            });
-                        }
-                
-                        window.addEventListener('scroll', animateOnScroll);
-                        window.addEventListener('load', animateOnScroll);
-                
-                        // Form submission
-                        const contactForm = document.getElementById('contactForm');
-                        if (contactForm) {
-                            contactForm.addEventListener('submit', function(e) {
-                                e.preventDefault();
-                                // Here you would typically send the form data to a server
-                                alert('Thank you for your message! I will get back to you soon.');
-                                this.reset();
-                            });
-                        }
-                        // Certificate Modal Functionality
-        const certificationCards = document.querySelectorAll('.certification-card');
-        const modal = document.getElementById('certificateModal');
-        const modalImage = document.getElementById('modalCertificateImage');
-        const modalTitle = document.getElementById('modalCertificateTitle');
-        const modalIssuer = document.getElementById('modalCertificateIssuer');
-        const modalDate = document.getElementById('modalCertificateDate');
-        const modalId = document.getElementById('modalCertificateId');
-        const modalDescription = document.getElementById('modalCertificateDescription');
-        const modalLink = document.getElementById('modalCertificateLink');
-        const closeButtons = document.querySelectorAll('.close-modal');
+                    <h3>Python</h3>
+                    <p>Advanced Python programming with experience in OOP, data structures, and algorithm design</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Systems</h3>
+                    <p>SQL and NoSQL databases including MySQL, SQLite, and MongoDB</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML/CSS</h3>
+                    <p>Semantic HTML5 and modern CSS3 with responsive design principles</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Client-side scripting, DOM manipulation, and basic front-end frameworks</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Version Control</h3>
+                    <p>Git and GitHub for collaborative development and version management</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>CLI Development</h3>
+                    <p>Building command-line interfaces and tools for system applications</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Django</h3>
+                    <p>Python web framework for building lightweight web applications and APIs</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        certificationCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const imgSrc = this.querySelector('img').src;
-                const title = this.querySelector('h3').textContent;
-                const issuer = this.querySelector('.issuer').textContent;
-                const date = this.querySelector('.date').textContent;
-                const description = this.querySelector('p:not(.issuer):not(.date)').textContent;
-                
-                modalImage.src = imgSrc;
-                modalTitle.textContent = title;
-                modalIssuer.textContent = issuer;
-                modalDate.textContent = date;
-                modalDescription.textContent = description;
-                
-                // Set a sample credential ID (replace with actual data)
-                modalId.textContent = "ID-"+Math.random().toString(36).substr(2, 9).toUpperCase();
-                
-                // Set verify link (replace # with actual link)
-                modalLink.href = "#";
-                
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate-in">
+                    <h3>Contact Information</h3>
+                    <p>I'm currently open to new opportunities, interesting projects, or just tech discussions. Don't hesitate to reach out!</p>
+                    <ul class="contact-details">
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p>Email</p>
+                                <span>maheshrajlamsal01@gmail.com</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p>Phone</p>
+                                <span>+977-9828890064</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p>Location</p>
+                                <span>Permanent: Nawalpur-Devchuli-03, Nepal</span>
+                                <span>Temporary: Amardeep-16, Pokhara</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="https://github.com/Mahesh-179" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mahesh-raj-lamsal-264a8b340/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/mahesh.lamsal.2025/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:maheshrajlamsal01@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate-in">
+                    <h3>Send Me a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Mahesh Raj Lamsal</h3>
+                    <p>A passionate software developer dedicated to creating efficient and innovative solutions that solve real-world problems.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Mahesh-179" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mahesh-raj-lamsal-264a8b340/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/mahesh.lamsal.2025/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:maheshrajlamsal01@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Technologies</h4>
+                    <ul>
+                        <li><a href="#skills">Python</a></li>
+                        <li><a href="#skills">Web Development</a></li>
+                        <li><a href="#skills">Database Systems</a></li>
+                        <li><a href="#skills">Data Analysis</a></li>
+                        <li><a href="#skills">CLI Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Mahesh Raj Lamsal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-                    </script>
-                </body>
-                </html>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
