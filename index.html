@@ -3,217 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahesh Raj Lamsal </title>
+    <title>Mahesh Raj Lamsal - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        /* Education Section Styles */
-        .education {
-            background-color: #f9f9f9;
-            padding: 80px 0;
-        }
-        
-        .education .section-header h2 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .education .section-header p {
-            color: #666;
-            margin-bottom: 40px;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #4a6cf7;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 50px;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-            border: 4px solid #4a6cf7;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::after {
-            left: -10px;
-            right: auto;
-        }
-        
-        .timeline-year {
-            position: absolute;
-            top: 20px;
-            z-index: 1;
-            background-color: #4a6cf7;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-year {
-            right: -75px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-year {
-            left: -75px;
-        }
-        
-        .timeline-content h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .timeline-content p {
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .institution {
-            color: #4a6cf7;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .institution i {
-            font-size: 1.1rem;
-        }
-        
-        .education-icon {
-            position: absolute;
-            background-color: #4a6cf7;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            top: 20px;
-            right: -25px;
-        }
-        
-        .timeline-item:nth-child(even) .education-icon {
-            left: -25px;
-            right: auto;
-        }
-        
-        /* Responsive Design for Education Section */
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-content::after {
-                left: -10px;
-                right: auto;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-year,
-            .timeline-item:nth-child(even) .timeline-year {
-                left: 70px;
-                right: auto;
-                top: -30px;
-            }
-            
-            .timeline-item:nth-child(odd) .education-icon,
-            .timeline-item:nth-child(even) .education-icon {
-                left: 10px;
-                right: auto;
-            }
-            
-            .education {
-                padding: 60px 0;
-            }
-        }
-        
-        @media screen and (max-width: 480px) {
-            .timeline-item {
-                padding-left: 60px;
-                padding-right: 15px;
-            }
-            
-            .timeline-content {
-                padding: 15px;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-year,
-            .timeline-item:nth-child(even) .timeline-year {
-                left: 60px;
-            }
-        }
-        
-        /* Animation for Education Items */
-        .animate-slide-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-        
-        .animate-slide-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -227,14 +21,16 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li> <!-- Added Education link -->
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <button class="close-menu" id="closeMenu" aria-label="Close Menu">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <li class="close-menu-item">
+                        <button class="close-menu" id="closeMenu" aria-label="Close Menu">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -281,7 +77,7 @@
                     <img class="main-img" src="about.png" alt="Mahesh's profile photo">
                 </div>
                 <div class="about-text animate-in">
-                    <h3>BSC CSIT Student </h3>
+                    <h3>BSC CSIT Student & Software Developer</h3>
                     <p>I'm Mahesh Lamsal, a passionate and goal-driven individual currently diving deep into backend development with Python and Django. With a strong foundation in computer systems and a keen interest in building smart, real-world solutions.</p>
                     <p>I'm on a mission to become a job-ready backend developer. I thrive on challenges, believe in lifelong learning, and I'm working toward creating scalable software that brings real value to users and businesses alike.</p>
                     <a href="#contact" class="btn btn-primary">
@@ -388,7 +184,7 @@
                 <!-- Chat Box System -->
                 <div class="project-card animate-in">
                     <div class="project-image">
-                        <img src="ai.jpg" alt="AI CHAT BOX  System">
+                        <img src="ai.jpg" alt="AI CHAT BOX System">
                         <span class="project-category">Python</span>
                     </div>
                     <div class="project-content">
@@ -418,7 +214,7 @@
                         <p>A Django web application that manages student records, calculates grades, stores results, and allows easy viewing and updating through web forms.</p>
                         <div class="project-tech">
                             <span>Django Framework</span>
-                            <span>MVT Architecture (Model, View, Template)</span>
+                            <span>MVT Architecture</span>
                             <span>Views & URL Routing</span>
                         </div>
                         <div class="project-links">
@@ -451,7 +247,7 @@
                         <p class="issuer">Great Learning</p>
                         <p class="date">Issued May 2023</p>
                         <p>Comprehensive certification covering Python fundamentals, data structures, and object-oriented programming concepts.</p>
-                        <button class="btn btn-outline" style="margin-top: auto;">
+                        <button class="btn btn-outline view-certificate">
                             <i class="fas fa-external-link-alt"></i> View Details
                         </button>
                     </div>
@@ -468,7 +264,7 @@
                         <p class="issuer">The Digital Adda</p>
                         <p class="date">Issued March 2023</p>
                         <p>Certification covering HTML5, CSS3, JavaScript, and responsive design principles.</p>
-                        <button class="btn btn-outline" style="margin-top: auto;">
+                        <button class="btn btn-outline view-certificate">
                             <i class="fas fa-external-link-alt"></i> View Details
                         </button>
                     </div>
@@ -485,7 +281,7 @@
                         <p class="issuer">FreeCodeCamp</p>
                         <p class="date">Issued May 7, 2025</p>
                         <p>Certification demonstrating proficiency in HTML, CSS, and JavaScript for responsive web development.</p>
-                        <button class="btn btn-outline" style="margin-top: auto;">
+                        <button class="btn btn-outline view-certificate">
                             <i class="fas fa-external-link-alt"></i> View Details
                         </button>
                     </div>
@@ -651,7 +447,13 @@
                 </div>
                 <div class="contact-form animate-in">
                     <h3>Send Me a Message</h3>
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Hidden Fields -->
+                        <input type="hidden" name="access_key" value="0e95c1ed-0a4f-4ea5-8570-a9d8d10e4e7e">
+                        <input type="hidden" name="subject" value="New Message from Portfolio Website">
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                         </div>
@@ -661,18 +463,18 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                            <input type="text" class="form-control" id="form_subject" name="subject" placeholder="Subject" required>
                         </div>
                         
                         <div class="form-group">
-                            <textarea class="form-control" id="message" name="message" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
-                    <div class="form-success" id="formSuccess">
+                    <div class="form-success" id="formSuccess" style="display: none;">
                         <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
                     </div>
                 </div>
@@ -699,7 +501,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#education">Education</a></li> <!-- Added Education link -->
+                        <li><a href="#education">Education</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#certifications">Certifications</a></li>
                         <li><a href="#skills">Skills</a></li>
@@ -709,11 +511,11 @@
                 <div class="footer-links">
                     <h4>Technologies</h4>
                     <ul>
-                        <li><a href="https://www.python.org/">Python</a></li>
-                        <li><a href="https://www.w3schools.com/whatis/">Web Development</a></li>
-                        <li><a href="https://www.geeksforgeeks.org/dbms/introduction-of-dbms-database-management-system-set-1/">Database Systems</a></li>
-                        <li><a href="https://www.geeksforgeeks.org/data-analysis/what-is-data-analysis/">Data Analysis</a></li>
-                        <li><a href="https://aws.amazon.com/what-is/cli/">CLI Tools</a></li>
+                        <li><a href="#skills">Python</a></li>
+                        <li><a href="#skills">Web Development</a></li>
+                        <li><a href="#skills">Database Systems</a></li>
+                        <li><a href="#skills">Data Analysis</a></li>
+                        <li><a href="#skills">CLI Tools</a></li>
                     </ul>
                 </div>
             </div>
@@ -724,121 +526,10 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
 
     <script src="script.js"></script>
-    <script>
-        // JavaScript for Education Section Animation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll animation for education timeline items
-            const educationItems = document.querySelectorAll('.animate-slide-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            educationItems.forEach(item => {
-                observer.observe(item);
-            });
-            
-            // Update year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-            
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        const navLinks = document.getElementById('navLinks');
-                        if (navLinks.classList.contains('active')) {
-                            navLinks.classList.remove('active');
-                        }
-                    }
-                });
-            });
-            
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menuToggle');
-            const closeMenu = document.getElementById('closeMenu');
-            const navLinks = document.getElementById('navLinks');
-            
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', function() {
-                    navLinks.classList.add('active');
-                });
-            }
-            
-            if (closeMenu && navLinks) {
-                closeMenu.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                });
-            }
-            
-            // Back to top button
-            const backToTop = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTop.style.display = 'flex';
-                } else {
-                    backToTop.style.display = 'none';
-                }
-            });
-            
-            if (backToTop) {
-                backToTop.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-            
-            // Responsive adjustments
-            function adjustTimelineForMobile() {
-                const timelineItems = document.querySelectorAll('.timeline-item');
-                const timeline = document.querySelector('.timeline');
-                
-                if (window.innerWidth <= 768) {
-                    timelineItems.forEach(item => {
-                        const yearElement = item.querySelector('.timeline-year');
-                        const content = item.querySelector('.timeline-content h3').textContent;
-                        
-                        // Add data attribute for mobile view
-                        if (content.includes('Bachelor') || content.includes('BSc')) {
-                            yearElement.textContent = 'Present';
-                        } else if (content.includes('+2')) {
-                            yearElement.textContent = '2022-2024';
-                        } else if (content.includes('School') || content.includes('SEE')) {
-                            yearElement.textContent = '2022';
-                        }
-                    });
-                }
-            }
-            
-            // Initial call and on resize
-            adjustTimelineForMobile();
-            window.addEventListener('resize', adjustTimelineForMobile);
-        });
-    </script>
 </body>
 </html>
