@@ -5,8 +5,15 @@ const closeMenu = document.getElementById('closeMenu');
 const backToTop = document.getElementById('backToTop');
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
 const submitBtn = document.getElementById('submitBtn');
 const currentYear = document.getElementById('year');
+
+// Form elements
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const subjectInput = document.getElementById('form_subject');
+const messageInput = document.getElementById('message');
 
 // Certificate Modal Elements
 const modal = document.getElementById('certificateModal');
@@ -46,6 +53,10 @@ const certificateData = {
         link: '#'
     }
 };
+
+// Web3Forms Configuration
+const WEB3FORMS_ACCESS_KEY = '0e95c1ed-0a4f-4ea5-8570-a9d8d10e4e7e';
+const RECIPIENT_EMAIL = 'lamsalmahesh0007@gmail.com';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -269,91 +280,31 @@ function closeCertificateModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Form Handling with Web3Forms
+// Form Handling
 function initFormHandling() {
     if (!contactForm) return;
     
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Validate form
-        if (!validateForm()) {
-            return;
-        }
-        
-        // Disable submit button and show loading
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        try {
-            // Create FormData from the form
-            const formData = new FormData(this);
-            
-            // Add additional hidden fields for Web3Forms
-            formData.append('redirect', 'https://web3forms.com/success');
-            formData.append('from_name', 'Portfolio Contact Form');
-            
-            // Send to Web3Forms
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                // Show success message
-                formSuccess.style.display = 'block';
-                contactForm.reset();
-                
-                // Scroll to success message
-                formSuccess.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'nearest'
-                });
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formSuccess.style.display = 'none';
-                }, 5000);
-            } else {
-                showFormError('Failed to send message. Please try again later.');
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showFormError('Network error. Please check your connection and try again.');
-        } finally {
-            // Re-enable submit button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
+    // Real-time validation
+    setupFormValidation();
     
-    // Add real-time validation
-    const formInputs = contactForm.querySelectorAll('input, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        input.addEventListener('input', function() {
-            clearFieldError(this);
-        });
-    });
+    // Form submission
+    contactForm.addEventListener('submit', handleFormSubmit);
 }
 
-function validateForm() {
-    let isValid = true;
-    const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
+function setupFormValidation() {
+    const formInputs = [nameInput, emailInput, subjectInput, messageInput];
     
     formInputs.forEach(input => {
-        if (!validateField(input)) {
-            isValid = false;
-        }
+        if (!input) return;
+        
+        input.addEventListener('blur', () => {
+            validateField(input);
+        });
+        
+        input.addEventListener('input', () => {
+            clearFieldError(input);
+        });
     });
-    
-    return isValid;
 }
 
 function validateField(field) {
@@ -378,6 +329,12 @@ function validateField(field) {
         }
     }
     
+    // Message length validation
+    if (field.id === 'message' && field.value.trim().length < 10) {
+        isValid = false;
+        errorMessage = 'Message must be at least 10 characters';
+    }
+    
     // Show error if invalid
     if (!isValid) {
         showFieldError(field, errorMessage);
@@ -389,64 +346,131 @@ function validateField(field) {
 function showFieldError(field, message) {
     field.classList.add('error');
     
-    // Create error message element
-    let errorElement = field.parentElement.querySelector('.error-message');
-    if (!errorElement) {
-        errorElement = document.createElement('div');
-        errorElement.className = 'error-message';
-        field.parentElement.appendChild(errorElement);
+    const errorElement = field.parentElement.querySelector('.field-error');
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
     }
-    
-    errorElement.textContent = message;
-    errorElement.style.color = 'var(--error)';
-    errorElement.style.fontSize = '0.875rem';
-    errorElement.style.marginTop = '0.5rem';
 }
 
 function clearFieldError(field) {
     field.classList.remove('error');
     
-    const errorElement = field.parentElement.querySelector('.error-message');
+    const errorElement = field.parentElement.querySelector('.field-error');
     if (errorElement) {
-        errorElement.remove();
+        errorElement.textContent = '';
+        errorElement.classList.remove('show');
     }
 }
 
-function showFormError(message) {
-    // Create or update error element
-    let errorElement = contactForm.querySelector('.form-error');
-    if (!errorElement) {
-        errorElement = document.createElement('div');
-        errorElement.className = 'form-error';
-        contactForm.insertBefore(errorElement, contactForm.firstChild);
+function validateForm() {
+    let isValid = true;
+    const formInputs = [nameInput, emailInput, subjectInput, messageInput];
+    
+    formInputs.forEach(input => {
+        if (!input) return;
+        
+        if (!validateField(input)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    // Hide previous messages
+    formSuccess.classList.remove('show');
+    formError.classList.remove('show');
+    
+    // Validate form
+    if (!validateForm()) {
+        return;
     }
     
-    errorElement.innerHTML = `
-        <div style="
-            background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        ">
-            <i class="fas fa-exclamation-circle"></i>
-            ${message}
-        </div>
-    `;
+    // Disable submit button and show loading
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
     
-    // Remove error after 5 seconds
-    setTimeout(() => {
-        if (errorElement) {
-            errorElement.remove();
+    try {
+        // Create FormData
+        const formData = new FormData(contactForm);
+        
+        // Add Web3Forms specific data
+        formData.set('access_key', WEB3FORMS_ACCESS_KEY);
+        formData.set('subject', `New Message from ${nameInput.value}: ${subjectInput.value}`);
+        formData.set('from_name', 'Mahesh Portfolio Contact Form');
+        formData.set('replyto', emailInput.value);
+        
+        // Send to Web3Forms
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Show success message
+            formSuccess.classList.add('show');
+            contactForm.reset();
+            
+            // Scroll to success message
+            formSuccess.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+            }, 5000);
+        } else {
+            throw new Error(result.message || 'Form submission failed');
         }
-    }, 5000);
+    } catch (error) {
+        console.error('Form submission error:', error);
+        
+        // Show error message
+        formError.classList.add('show');
+        
+        // Scroll to error message
+        formError.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'nearest'
+        });
+        
+        // Hide error message after 5 seconds
+        setTimeout(() => {
+            formError.classList.remove('show');
+        }, 5000);
+    } finally {
+        // Re-enable submit button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+    }
 }
+
+// Setup Web3Forms email configuration
+function setupWeb3FormsEmail() {
+    // Note: You need to configure the recipient email in Web3Forms dashboard
+    console.log('Web3Forms Configuration:');
+    console.log('- Access Key:', WEB3FORMS_ACCESS_KEY);
+    console.log('- Recipient Email:', RECIPIENT_EMAIL);
+    console.log('- To change recipient email, visit: https://web3forms.com');
+    console.log('- Login with your access key and update email settings');
+}
+
+// Call setup function
+setupWeb3FormsEmail();
 
 // Responsive adjustments for timeline
 function adjustTimelineForMobile() {
@@ -477,17 +501,3 @@ adjustTimelineForMobile();
 
 // Update on resize
 window.addEventListener('resize', adjustTimelineForMobile);
-
-// Add error styles to CSS
-const style = document.createElement('style');
-style.textContent = `
-    .form-control.error {
-        border-color: var(--error) !important;
-        background-color: rgba(239, 68, 68, 0.05);
-    }
-    
-    .form-control.error:focus {
-        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
-    }
-`;
-document.head.appendChild(style);
